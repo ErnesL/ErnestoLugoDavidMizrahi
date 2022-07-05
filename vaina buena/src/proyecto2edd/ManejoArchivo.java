@@ -15,7 +15,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import static proyecto2edd.Interfaz.articulo;
 import static proyecto2edd.Interfaz.listaArticulos;
-import static proyecto2edd.Metodos.hashFunc;
+import static proyecto2edd.Metodos.*;
 
 /**
  *

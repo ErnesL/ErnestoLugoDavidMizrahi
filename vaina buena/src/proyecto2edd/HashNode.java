@@ -16,11 +16,11 @@ public class HashNode<T> {
     
     private HashNode<T> next;
     
-    public HashNode(){
+    public HashNode(int key, T value){
     
-        this.key = 0;
+        this.key = key;
         
-        this.value = null;
+        this.value = value;
         
         this.next = null;
     }

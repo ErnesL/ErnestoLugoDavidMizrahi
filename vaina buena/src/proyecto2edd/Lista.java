@@ -558,5 +558,17 @@ public class Lista<T> {
         return curr;
 
     }
+    public T valorPorIndice(int index){
+    
+        Nodo<T> aux = this.pFirst;
+        int i = 0;
+        while(i < index){
+            
+            aux = aux.getpNext();
+            i++;
+        
+        }
+        return aux.getInfo();
+    }
 
 }
