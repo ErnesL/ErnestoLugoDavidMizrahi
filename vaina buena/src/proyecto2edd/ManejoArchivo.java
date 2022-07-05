@@ -12,6 +12,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static proyecto2edd.Interfaz.articulo;
 import static proyecto2edd.Interfaz.listaArticulos;
@@ -40,7 +44,7 @@ public class ManejoArchivo {
         }
     }
 
-    public static void lecturaArchivo(String resumen, Articulo articulo, Lista listaArticulos) {
+    public static void lecturaArchivo(String resumen, Articulo articulo, Lista listaArticulos, HashTable hashTitulo, HashTable hashAutores, HashTable hashPalabras) {
 
         Scanner scanner = new Scanner(resumen);
         int i = 0;
@@ -173,12 +177,70 @@ public class ManejoArchivo {
 
             }
 
+            //Articulos
             articulo.setPalabrasClave(palabrasClave);
 
             articulo.agregarABaseDeDatos();
 
             articulo.mostrarInfo();
+
+            //Hash
+            hashTitulo.put(articulo, articulo);
+            Nodo aux1 = articulo.getAutores().getpFirst();
+            for (int k = 0; k < articulo.getAutores().Size(); k++) {
+                hashAutores.put_listas(aux1, articulo);
+
+                aux1 = aux1.getpNext();
+
+            }
+
+            Nodo aux2 = articulo.getPalabrasClave().getpFirst();
+            for (int k = 0; k < articulo.getPalabrasClave().Size(); k++) {
+                hashPalabras.put_listas(aux2, articulo);
+
+                aux2 = aux2.getpNext();
+
+            }
+
         }
+    }
+
+    public static void listaDesplegable() {
+        JFrame jFrame = new JFrame();
+
+        String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
+        Nodo aux10 = articulo.getAutores().getpFirst();
+
+        String concatenadoaux = "";
+        for (int c = 0; c < articulo.getAutores().Size(); c++) {
+            concatenadoaux += aux10.getInfo().toString() + "//";
+
+            aux10 = aux10.getpNext();
+        }
+
+        String[] concatenadoauxsplit = concatenadoaux.split("//");
+        JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+
+        jComboBox.setBounds(80, 50, 140, 20);
+
+        JButton jButton = new JButton("Done");
+        jButton.setBounds(100, 100, 90, 20);
+
+        JLabel jLabel = new JLabel();
+        jLabel.setBounds(90, 100, 400, 100);
+
+        jFrame.add(jButton);
+        jFrame.add(jComboBox);
+        jFrame.add(jLabel);
+
+        jFrame.setLayout(null);
+        jFrame.setSize(350, 250);
+        jFrame.setVisible(true);
+
+        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+
+        jLabel.setText(selectedFruit);
+
     }
 
     public static void eliminarArchivo() {

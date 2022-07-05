@@ -6,6 +6,8 @@
 package proyecto2edd;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +15,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -28,6 +34,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     public static Lista listaArticulos = new Lista();
     public static Articulo articulo = new Articulo();
+    public static HashTable hashTitulo = new HashTable(37);
+    public static HashTable hashAutores = new HashTable(1000);
+    public static HashTable hashPalabras = new HashTable(1000);
 
     /**
      * Creates new form Interfaz
@@ -106,7 +115,6 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
         JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         jfc.setDialogTitle("Selecciona un archivo de texto (.txt)");
@@ -137,7 +145,7 @@ public class Interfaz extends javax.swing.JFrame {
 
                 }
 
-                lecturaArchivo(txt, articulo, listaArticulos);
+                lecturaArchivo(txt, articulo, listaArticulos, hashTitulo, hashAutores, hashPalabras);
             } catch (IOException e) {
                 System.err.format("IOException: %s%n", e);
             }
@@ -151,6 +159,34 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        ManejoArchivo.listaDesplegable();
+
+//        JFrame jFrame = new JFrame();
+//
+//        String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
+//        
+//        
+//        JComboBox<String> jComboBox = new JComboBox<>(optionsToChoose);
+//        jComboBox.setBounds(80, 50, 140, 20);
+//
+//        JButton jButton = new JButton("Done");
+//        jButton.setBounds(100, 100, 90, 20);
+//
+//        JLabel jLabel = new JLabel();
+//        jLabel.setBounds(90, 100, 400, 100);
+//
+//        jFrame.add(jButton);
+//        jFrame.add(jComboBox);
+//        jFrame.add(jLabel);
+//
+//        jFrame.setLayout(null);
+//        jFrame.setSize(350, 250);
+//        jFrame.setVisible(true);
+//
+//        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+//
+//        jLabel.setText(selectedFruit);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
