@@ -68,19 +68,22 @@ public class Articulo<T> {
     }
 
     public void mostrarInfoTuneado(Articulo articulo) {
-        String cantidadDeVeces = "";
+        String palabras = "";
         String autoresconcatenados = this.autores.concatenarValores(this.autores);
+        int cantPalabras = 0;
 
         Nodo aux1 = articulo.getPalabrasClave().getpFirst();
 
         while (aux1 != null) {
+            String[] array = articulo.getCuerpo().split(aux1.getInfo().toString());
+            cantPalabras = array.length -1;
 
-            cantidadDeVeces += "Frecuencia con la que aparece la palabra clave " + aux1.getInfo().toString() + ": " + "\n";
-
+            palabras += "Frecuencia con la que aparece la palabra clave " + aux1.getInfo().toString() + ": " + cantPalabras+ "\n";
+            
             aux1 = aux1.getpNext();
         }
-        System.out.println(Metodos.contarPalabras(articulo));
-        String aux = "Titulo: " + this.titulo + "\n" + "Autores: " + autoresconcatenados + "\n" + cantidadDeVeces;
+//        System.out.println(Metodos.contarPalabras(articulo));
+        String aux = "Titulo: " + this.titulo + "\n" + "Autores: " + autoresconcatenados + "\n" + palabras;
 
         //Interfaz
         JFrame frame = new JFrame(this.titulo);
