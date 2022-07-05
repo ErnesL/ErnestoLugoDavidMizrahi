@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import proyecto2edd.Metodos.*;
 
 /**
  *
@@ -64,8 +65,41 @@ public class Articulo<T> {
         frame.add(scroll);
         frame.setVisible(true);
 
-//        JOptionPane.showMessageDialog(null, autoresconcatenados);
-//        JOptionPane.showMessageDialog(null, palabrasconcatenadas);
+    }
+
+    public void mostrarInfoTuneado(Articulo articulo) {
+        String cantidadDeVeces = "";
+        String autoresconcatenados = this.autores.concatenarValores(this.autores);
+
+        Nodo aux1 = articulo.getPalabrasClave().getpFirst();
+
+        while (aux1 != null) {
+
+            cantidadDeVeces += "Frecuencia con la que aparece la palabra clave " + aux1.getInfo().toString() + ": " + "\n";
+
+            aux1 = aux1.getpNext();
+        }
+        System.out.println(Metodos.contarPalabras(articulo));
+        String aux = "Titulo: " + this.titulo + "\n" + "Autores: " + autoresconcatenados + "\n" + cantidadDeVeces;
+
+        //Interfaz
+        JFrame frame = new JFrame(this.titulo);
+        frame.setSize(500, 500);
+        frame.setResizable(false);
+        JTextArea textArea = new JTextArea(aux);
+        textArea.setSize(400, 400);
+
+        textArea.setLineWrap(true);
+        textArea.setEditable(false);
+        textArea.setVisible(true);
+
+        JScrollPane scroll = new JScrollPane(textArea);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        frame.add(scroll);
+        frame.setVisible(true);
+
     }
 
     public void agregarABaseDeDatos() {
@@ -85,7 +119,6 @@ public class Articulo<T> {
 
         }
     }
-
 
     public String getTitulo() {
         return titulo;

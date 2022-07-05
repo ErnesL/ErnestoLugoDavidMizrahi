@@ -5,12 +5,13 @@
 package proyecto2edd;
 
 /**
- * Aqui implementamos la funcion hash que nos va a generar la clave para cada articulo
+ * Aqui implementamos la funcion hash que nos va a generar la clave para cada
+ * articulo
+ *
  * @author davidmizrahi
  */
 public class Metodos {
-    
-       
+
 //    public static int hashFunc(Articulo articulo){
 //    
 //        int ascii = 0;
@@ -56,32 +57,51 @@ public class Metodos {
 //        
 //    }
 //    
-    public int contarPalabras(Articulo articulo){
-      
-  
-      Nodo aux = articulo.getPalabrasClave().getpFirst();
+//    public static int contarPalabras(Articulo articulo) {
+//        String[] array = new String[400];
+//        Nodo aux = articulo.getPalabrasClave().getpFirst();
+//
+//        int i = 1;
+//
+//        while (aux != null) {
+//
+//            array = articulo.getCuerpo().split(aux.getInfo().toString());
+//
+//            System.out.print("Numero de veces que aparece la palabra clave " + i + ": ");
+//
+//            System.out.println(array.length - 1);
+//
+//            aux = aux.getpNext();
+//            i++;
+//
+//        }
+//
+//        return array.length - 1;
+//
+//    }
+    public static int contarPalabras(Articulo articulo) {
+        String[] array = new String[400];
+        Nodo aux = articulo.getPalabrasClave().getpFirst();
+        String cantidadDeVeces = "";
 
-    int i = 1;
-      
-    while(aux != null){
-    
-        String[] array =  articulo.getCuerpo().split(aux.getInfo().toString());
+        int i = 1;
 
-                System.out.print("Numero de veces que aparece la palabra clave "+ i + ": ");
-               
-                System.out.println( array.length - 1);
-            
-                aux = aux.getpNext();
-                i++;
+        while (aux != null) {
 
-      }
-    
-    
+            array = articulo.getCuerpo().split(aux.getInfo().toString());
 
+            System.out.print("Numero de veces que aparece la palabra clave " + i + ": ");
 
-        return 0;
+            System.out.println(array.length - 1);
+            cantidadDeVeces += "Frecuencia con la que aparece la palabra clave " + aux.getInfo().toString() + ": " + Integer.toString(array.length - 1) + "\n";
 
-      
-  } 
-    
+            aux = aux.getpNext();
+            i++;
+
+        }
+
+        return array.length - 1;
+
+    }
+
 }

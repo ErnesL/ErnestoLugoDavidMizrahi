@@ -34,7 +34,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     public static Lista listaArticulos = new Lista();
     public static Articulo articulo = new Articulo();
-    public static HashTable hashTitulo = new HashTable(37);
+    public static HashTable hashTitulo = new HashTable(1000);
     public static HashTable hashAutores = new HashTable(1000);
     public static HashTable hashPalabras = new HashTable(1000);
 
@@ -102,7 +102,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
-        jButton2.setText("ver size listaArticulos");
+        jButton2.setText("ver listaDesplegable");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -160,33 +160,62 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        ManejoArchivo.listaDesplegable();
+        String titulosconcatenados = "";
+        String concatenadobien = "";
 
-//        JFrame jFrame = new JFrame();
-//
-//        String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
-//        
-//        
-//        JComboBox<String> jComboBox = new JComboBox<>(optionsToChoose);
-//        jComboBox.setBounds(80, 50, 140, 20);
-//
-//        JButton jButton = new JButton("Done");
-//        jButton.setBounds(100, 100, 90, 20);
-//
-//        JLabel jLabel = new JLabel();
-//        jLabel.setBounds(90, 100, 400, 100);
-//
-//        jFrame.add(jButton);
-//        jFrame.add(jComboBox);
-//        jFrame.add(jLabel);
-//
-//        jFrame.setLayout(null);
-//        jFrame.setSize(350, 250);
-//        jFrame.setVisible(true);
-//
-//        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
-//
-//        jLabel.setText(selectedFruit);
+        //TODO a
+        if (!listaArticulos.esVacio()) {
+
+            Nodo aux = listaArticulos.getpFirst();
+
+            for (int k = 0; k < listaArticulos.Size(); k++) {
+
+                Articulo aux1 = (Articulo) aux.getInfo();
+                titulosconcatenados += aux1.getTitulo() + "//";
+
+                aux = aux.getpNext();
+
+            }
+            concatenadobien = titulosconcatenados.substring(0, titulosconcatenados.length() - 2);
+
+            String[] concatenadobiensplit = concatenadobien.split("//");
+
+            JFrame jFrame = new JFrame("Articulos por titulo");
+            JComboBox<String> jComboBox = new JComboBox<>(concatenadobiensplit);
+            jComboBox.setBounds(20, 50, 400, 40);
+
+            JButton jButton = new JButton("Escoger");
+            jButton.setBounds(170, 100, 90, 20);
+
+            JLabel jLabel = new JLabel();
+            jLabel.setBounds(10, 100, 400, 100);
+
+            jFrame.add(jButton);
+            jFrame.add(jComboBox);
+            jFrame.add(jLabel);
+
+            jFrame.setLayout(null);
+            jFrame.setSize(450, 200);
+            jFrame.setVisible(true);
+            jFrame.setLocationRelativeTo(null);
+
+            jButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String tituloseleccionado = "Haz escogido " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    jLabel.setText(tituloseleccionado);
+                    String titulobueno = jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    int key = hashTitulo.stringtoNum(titulobueno);
+                    int index = hashTitulo.getBucketIndex(key);
+                    Articulo aux = (Articulo) hashTitulo.getBucketArray()[index].getValue();
+                    aux.mostrarInfoTuneado(aux);
+                }
+            });
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error. No existen elementos en la base de datos.");
+        }
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

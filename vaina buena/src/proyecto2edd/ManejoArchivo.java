@@ -5,6 +5,8 @@
 package proyecto2edd;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static proyecto2edd.Interfaz.articulo;
+import static proyecto2edd.Interfaz.hashTitulo;
 import static proyecto2edd.Interfaz.listaArticulos;
 import static proyecto2edd.Metodos.*;
 
@@ -30,7 +33,6 @@ public class ManejoArchivo {
     //Esta funcionalidad permite la creacion y escritura del archivo.
     public static void crearArchivo(String resumenes) {
 
-        //File archivo = new File(nombreArchivo);
         try {
             PrintWriter pw = new PrintWriter("test//resumenes.txt");
 
@@ -62,7 +64,7 @@ public class ManejoArchivo {
 
 //Verificacion de si existe el articulo en la base de datos.
         String titulo = arrayCampos[0];
-        System.out.println(titulo);
+
         boolean encontrado = false;
 
         if (!listaArticulos.esVacio()) {
@@ -135,8 +137,28 @@ public class ManejoArchivo {
 
                 articulo.mostrarInfo();
 
+                listaArticulos.agregarElemento(articulo);
+
+                //hash
+                hashTitulo.put(articulo, articulo);
+                Nodo aux1 = articulo.getAutores().getpFirst();
+                for (int k = 0; k < articulo.getAutores().Size(); k++) {
+                    hashAutores.put_listas(aux1, articulo);
+
+                    aux1 = aux1.getpNext();
+
+                }
+
+                Nodo aux2 = articulo.getPalabrasClave().getpFirst();
+                for (int k = 0; k < articulo.getPalabrasClave().Size(); k++) {
+                    hashPalabras.put_listas(aux2, articulo);
+
+                    aux2 = aux2.getpNext();
+
+                }
+
             }
-        } else {
+        } else { //Si esta vacia la lista
 //proceso de agregar articulo
 
             articulo.setTitulo(titulo);
@@ -184,6 +206,8 @@ public class ManejoArchivo {
 
             articulo.mostrarInfo();
 
+            listaArticulos.agregarElemento(articulo);
+
             //Hash
             hashTitulo.put(articulo, articulo);
             Nodo aux1 = articulo.getAutores().getpFirst();
@@ -205,8 +229,8 @@ public class ManejoArchivo {
         }
     }
 
-    public static void listaDesplegable() {
-        JFrame jFrame = new JFrame();
+    public static void listaDesplegable(Lista listaArticulos) {
+        JFrame jFrame = new JFrame("Seleccione la opcion deseada: ");
 
         String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
         Nodo aux10 = articulo.getAutores().getpFirst();
@@ -240,6 +264,14 @@ public class ManejoArchivo {
         String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
 
         jLabel.setText(selectedFruit);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                jLabel.setText(selectedFruit);
+            }
+        });
+        System.out.println(jLabel.getText());
 
     }
 
@@ -258,6 +290,7 @@ public class ManejoArchivo {
         String path = "test\\basededatos.txt";
         String line;
         File file = new File(path);
+        String autoresconcatenados = "";
 
         try {
             if (!file.exists()) {
@@ -306,6 +339,9 @@ public class ManejoArchivo {
                         articulo.setAutores(listaAutores);
                         articulo.setCuerpo(articulo_objeto[2]);
                         articulo.setPalabrasClave(listaPalabras);
+
+                        //Agregar al Hash
+                        hashTitulo.put(articulo, articulo);
 
                         //Agregar a listaArticulos
                         listaArticulos.agregarElemento(articulo);
