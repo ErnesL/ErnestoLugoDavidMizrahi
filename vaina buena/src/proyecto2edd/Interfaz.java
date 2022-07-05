@@ -64,7 +64,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ArticulosPorTitulo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,9 +80,19 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(BotonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 130, -1));
 
         BotonBPAutor.setText("Autor");
+        BotonBPAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBPAutorActionPerformed(evt);
+            }
+        });
         jPanel1.add(BotonBPAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
         BotonBPPC.setText("Palabras claves");
+        BotonBPPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBPPCActionPerformed(evt);
+            }
+        });
         jPanel1.add(BotonBPPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
 
         jLabel1.setText("Proyecto 2 / Ernesto Lugo - David Mizrahi");
@@ -102,13 +112,13 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
-        jButton2.setText("ver listaDesplegable");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ArticulosPorTitulo.setText("ver Articulos por Titulo");
+        ArticulosPorTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ArticulosPorTituloActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        jPanel1.add(ArticulosPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 380));
 
@@ -158,7 +168,7 @@ public class Interfaz extends javax.swing.JFrame {
         listaArticulos.imprimirValores();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ArticulosPorTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArticulosPorTituloActionPerformed
 
         String titulosconcatenados = "";
         String concatenadobien = "";
@@ -217,7 +227,98 @@ public class Interfaz extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ArticulosPorTituloActionPerformed
+
+    private void BotonBPAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBPAutorActionPerformed
+        JFrame jFrame = new JFrame("Articulos por Autores");
+
+        Nodo aux10 = articulo.getAutores().getpFirst();
+
+        String concatenadoaux = "";
+        for (int c = 0; c < articulo.getAutores().Size(); c++) {
+            concatenadoaux += aux10.getInfo().toString() + "//";
+
+            aux10 = aux10.getpNext();
+        }
+
+        String[] concatenadoauxsplit = concatenadoaux.split("//");
+        JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+
+        jComboBox.setBounds(80, 50, 140, 20);
+
+        JButton jButton = new JButton("Done");
+        jButton.setBounds(100, 100, 90, 20);
+
+        JLabel jLabel = new JLabel();
+        jLabel.setBounds(90, 100, 400, 100);
+
+        jFrame.add(jButton);
+        jFrame.add(jComboBox);
+        jFrame.add(jLabel);
+
+        jFrame.setLayout(null);
+        jFrame.setSize(350, 250);
+        jFrame.setVisible(true);
+
+        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+
+        jLabel.setText(selectedFruit);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                jLabel.setText(selectedFruit);
+            }
+        });
+        System.out.println(jLabel.getText());
+
+    }//GEN-LAST:event_BotonBPAutorActionPerformed
+
+    private void BotonBPPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBPPCActionPerformed
+        JFrame jFrame = new JFrame("Seleccione la opcion deseada: ");
+
+        String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
+        Nodo aux10 = articulo.getAutores().getpFirst();
+
+        String concatenadoaux = "";
+        for (int c = 0; c < articulo.getAutores().Size(); c++) {
+            concatenadoaux += aux10.getInfo().toString() + "//";
+
+            aux10 = aux10.getpNext();
+        }
+
+        String[] concatenadoauxsplit = concatenadoaux.split("//");
+        JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+
+        jComboBox.setBounds(80, 50, 140, 20);
+
+        JButton jButton = new JButton("Done");
+        jButton.setBounds(100, 100, 90, 20);
+
+        JLabel jLabel = new JLabel();
+        jLabel.setBounds(90, 100, 400, 100);
+
+        jFrame.add(jButton);
+        jFrame.add(jComboBox);
+        jFrame.add(jLabel);
+
+        jFrame.setLayout(null);
+        jFrame.setSize(350, 250);
+        jFrame.setVisible(true);
+
+        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+
+        jLabel.setText(selectedFruit);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                jLabel.setText(selectedFruit);
+            }
+        });
+        System.out.println(jLabel.getText());
+
+    }//GEN-LAST:event_BotonBPPCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,11 +361,11 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ArticulosPorTitulo;
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonBPAutor;
     private javax.swing.JButton BotonBPPC;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
