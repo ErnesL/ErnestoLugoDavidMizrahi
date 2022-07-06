@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.concurrent.ForkJoinPool;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -63,11 +64,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         ArticulosPorTitulo = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,50 +80,60 @@ public class Interfaz extends javax.swing.JFrame {
                 BotonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 130, -1));
+        jPanel1.add(BotonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
-        BotonBPAutor.setText("Autor");
+        BotonBPAutor.setText("ver Articulos por Autor");
         BotonBPAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonBPAutorActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonBPAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        jPanel1.add(BotonBPAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
-        BotonBPPC.setText("Palabras claves");
+        BotonBPPC.setText("ver Articulos por Palabras Claves");
         BotonBPPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonBPPCActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonBPPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+        jPanel1.add(BotonBPPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
-        jLabel1.setText("Proyecto 2 / Ernesto Lugo - David Mizrahi");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 200, 30));
+        jLabel1.setText("Bienvenido a la libreria de articulos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 240, 30));
 
         jLabel2.setText("Para agregar un articulo a la base de datos ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jLabel3.setText("Para ver los articulos almacenados puede hacerlo por:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        jLabel3.setText("Para ver los articulos almacenados puedes hacerlo por:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        jButton1.setText("ver listaArticulos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
-
-        ArticulosPorTitulo.setText("ver Articulos por Titulo");
+        ArticulosPorTitulo.setText("Analizar articulo");
         ArticulosPorTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ArticulosPorTituloActionPerformed(evt);
             }
         });
-        jPanel1.add(ArticulosPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        jPanel1.add(ArticulosPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 380));
+        jLabel4.setText("Para analizar un articulo de la base de datos");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        jLabel5.setText("Creado por Ernesto Lugo y David Mizrahi");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/53a57d5b1adffe00c12a7ed37e7990aa.jpg"))); // NOI18N
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 360));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,10 +176,6 @@ public class Interfaz extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_BotonAgregarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        listaArticulos.imprimirValores();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ArticulosPorTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArticulosPorTituloActionPerformed
 
@@ -230,93 +239,126 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ArticulosPorTituloActionPerformed
 
     private void BotonBPAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBPAutorActionPerformed
-        JFrame jFrame = new JFrame("Articulos por Autores");
+        if (!listaArticulos.esVacio()) {
+            String concatenadoaux = "";
 
-        Nodo aux10 = articulo.getAutores().getpFirst();
+            Nodo aux2 = listaArticulos.getpFirst();
 
-        String concatenadoaux = "";
-        for (int c = 0; c < articulo.getAutores().Size(); c++) {
-            concatenadoaux += aux10.getInfo().toString() + "//";
+            while (aux2 != null) {
 
-            aux10 = aux10.getpNext();
-        }
+                Articulo aux3 = (Articulo) aux2.getInfo();
+                Nodo aux4 = aux3.getAutores().getpFirst();
 
-        String[] concatenadoauxsplit = concatenadoaux.split("//");
-        JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+                //Adentro de lista autores para cada nodo
+                for (int c = 0; c < aux3.getAutores().Size(); c++) {
+                    concatenadoaux += aux4.getInfo().toString() + "//";
 
-        jComboBox.setBounds(80, 50, 140, 20);
-
-        JButton jButton = new JButton("Done");
-        jButton.setBounds(100, 100, 90, 20);
-
-        JLabel jLabel = new JLabel();
-        jLabel.setBounds(90, 100, 400, 100);
-
-        jFrame.add(jButton);
-        jFrame.add(jComboBox);
-        jFrame.add(jLabel);
-
-        jFrame.setLayout(null);
-        jFrame.setSize(350, 250);
-        jFrame.setVisible(true);
-
-        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
-
-        jLabel.setText(selectedFruit);
-        jButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
-                jLabel.setText(selectedFruit);
+//                hashAutores.put_listas(aux4, aux2.getInfo());
+                    aux4 = aux4.getpNext();
+                }
+                aux2 = aux2.getpNext();
             }
-        });
-        System.out.println(jLabel.getText());
+
+            String concatenadobien = concatenadoaux.substring(0, concatenadoaux.length() - 2);
+            String[] concatenadoauxsplit = concatenadobien.split("//");
+            int n = concatenadoauxsplit.length;
+            String[] temp = Metodos.eliminarIguales(concatenadoauxsplit, n);
+
+            JFrame jFrame = new JFrame("Articulos por Autores");
+            JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+            jComboBox.setBounds(20, 50, 400, 40);
+
+            JButton jButton = new JButton("Escoger");
+            jButton.setBounds(170, 100, 90, 20);
+
+            JLabel jLabel = new JLabel();
+            jLabel.setBounds(10, 100, 400, 100);
+
+            jFrame.add(jButton);
+            jFrame.add(jComboBox);
+            jFrame.add(jLabel);
+
+            jFrame.setLayout(null);
+            jFrame.setSize(450, 200);
+            jFrame.setVisible(true);
+            jFrame.setLocationRelativeTo(null);
+
+            jButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String autorseleccionado = "Haz escogido " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    jLabel.setText(autorseleccionado);
+                    String autorbueno = jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    int key = hashAutores.stringtoNum(autorbueno);
+                    int index = hashAutores.getBucketIndex(key);
+                    Articulo aux = (Articulo) hashAutores.getBucketArray()[index].getValue();
+                    aux.mostrarInfo();
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Error. No existen elementos en la base de datos.");
+        }
 
     }//GEN-LAST:event_BotonBPAutorActionPerformed
 
     private void BotonBPPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBPPCActionPerformed
-        JFrame jFrame = new JFrame("Seleccione la opcion deseada: ");
+        if (!listaArticulos.esVacio()) {
+            String concatenadoaux = "";
+            Nodo aux2 = listaArticulos.getpFirst();
 
-        String[] optionsToChoose = {"Apple", "Orange", "Banana", "Pineapple", "None of the listed"};
-        Nodo aux10 = articulo.getAutores().getpFirst();
+            while (aux2 != null) {
 
-        String concatenadoaux = "";
-        for (int c = 0; c < articulo.getAutores().Size(); c++) {
-            concatenadoaux += aux10.getInfo().toString() + "//";
+                Articulo aux3 = (Articulo) aux2.getInfo();
+                Nodo aux4 = aux3.getPalabrasClave().getpFirst();
 
-            aux10 = aux10.getpNext();
-        }
-
-        String[] concatenadoauxsplit = concatenadoaux.split("//");
-        JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
-
-        jComboBox.setBounds(80, 50, 140, 20);
-
-        JButton jButton = new JButton("Done");
-        jButton.setBounds(100, 100, 90, 20);
-
-        JLabel jLabel = new JLabel();
-        jLabel.setBounds(90, 100, 400, 100);
-
-        jFrame.add(jButton);
-        jFrame.add(jComboBox);
-        jFrame.add(jLabel);
-
-        jFrame.setLayout(null);
-        jFrame.setSize(350, 250);
-        jFrame.setVisible(true);
-
-        String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
-
-        jLabel.setText(selectedFruit);
-        jButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedFruit = "You selected " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
-                jLabel.setText(selectedFruit);
+                //Adentro de lista autores para cada nodo
+                for (int c = 0; c < aux3.getPalabrasClave().Size(); c++) {
+                    concatenadoaux += aux4.getInfo().toString() + "//";
+                    aux4 = aux4.getpNext();
+                }
+                aux2 = aux2.getpNext();
             }
-        });
-        System.out.println(jLabel.getText());
+
+            String concatenadobien = concatenadoaux.substring(0, concatenadoaux.length() - 2);
+            String[] concatenadoauxsplit = concatenadobien.split("//");
+            int n = concatenadoauxsplit.length;
+            String[] temp = Metodos.eliminarIguales(concatenadoauxsplit, n);
+
+            JFrame jFrame = new JFrame("Articulos por Palabras Clave");
+            JComboBox<String> jComboBox = new JComboBox<>(concatenadoauxsplit);
+            jComboBox.setBounds(20, 50, 400, 40);
+
+            JButton jButton = new JButton("Escoger");
+            jButton.setBounds(170, 100, 90, 20);
+
+            JLabel jLabel = new JLabel();
+            jLabel.setBounds(10, 100, 400, 100);
+
+            jFrame.add(jButton);
+            jFrame.add(jComboBox);
+            jFrame.add(jLabel);
+
+            jFrame.setLayout(null);
+            jFrame.setSize(450, 200);
+            jFrame.setVisible(true);
+            jFrame.setLocationRelativeTo(null);
+
+            jButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String autorseleccionado = "Haz escogido " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    jLabel.setText(autorseleccionado);
+                    String autorbueno = jComboBox.getItemAt(jComboBox.getSelectedIndex());
+                    int key = hashPalabras.stringtoNum(autorbueno);
+                    int index = hashPalabras.getBucketIndex(key);
+                    Articulo aux = (Articulo) hashPalabras.getBucketArray()[index].getValue();
+                    aux.mostrarInfo();
+                }
+            });
+            System.out.println(jLabel.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Error. No existen elementos en la base de datos.");
+        }
 
     }//GEN-LAST:event_BotonBPPCActionPerformed
 
@@ -365,10 +407,12 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonBPAutor;
     private javax.swing.JButton BotonBPPC;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

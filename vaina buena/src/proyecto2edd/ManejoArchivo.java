@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static proyecto2edd.Interfaz.articulo;
+import static proyecto2edd.Interfaz.hashAutores;
+import static proyecto2edd.Interfaz.hashPalabras;
 import static proyecto2edd.Interfaz.hashTitulo;
 import static proyecto2edd.Interfaz.listaArticulos;
 import static proyecto2edd.Metodos.*;
@@ -229,10 +231,6 @@ public class ManejoArchivo {
         }
     }
 
-    public static void listaDesplegable(Lista listaArticulos) {
-        
-    }
-
     public static void eliminarArchivo() {
         File f0 = new File("test//resumenes.txt");
         if (f0.delete()) {
@@ -300,9 +298,43 @@ public class ManejoArchivo {
 
                         //Agregar al Hash
                         hashTitulo.put(articulo, articulo);
-
-                        //Agregar a listaArticulos
+//Agregar a listaArticulos
                         listaArticulos.agregarElemento(articulo);
+                        //Para autores
+                        Nodo aux2 = listaArticulos.getpFirst();
+
+                        while (aux2 != null) {
+
+                            Articulo aux3 = (Articulo) aux2.getInfo();
+                            Nodo aux4 = aux3.getAutores().getpFirst();
+
+                            //Adentro de lista autores para cada nodo
+                            for (int c = 0; c < aux3.getAutores().Size(); c++) {
+
+                                hashAutores.put_listas(aux4, aux2.getInfo());
+
+                                aux4 = aux4.getpNext();
+                            }
+                            aux2 = aux2.getpNext();
+                        }
+
+                        Nodo aux10 = listaArticulos.getpFirst();
+
+                        while (aux10 != null) {
+
+                            Articulo aux11 = (Articulo) aux10.getInfo();
+                            Nodo aux12 = aux11.getPalabrasClave().getpFirst();
+
+                            //Adentro de lista autores para cada nodo
+                            for (int c = 0; c < aux11.getPalabrasClave().Size(); c++) {
+
+                                hashPalabras.put_listas(aux12, aux10.getInfo());
+
+                                aux12 = aux12.getpNext();
+                            }
+                            aux10 = aux10.getpNext();
+                        }
+
                     }
                 }
                 br.close();
