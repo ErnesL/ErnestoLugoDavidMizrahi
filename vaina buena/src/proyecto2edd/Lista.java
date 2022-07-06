@@ -1,7 +1,6 @@
 package proyecto2edd;
 
 import java.util.StringJoiner;
-import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -146,34 +145,6 @@ public class Lista<T> {
         }
         return found;
     }
-//    public void insertarPorReferencia(int referencia, int valor){
-//        Nodo node = new Nodo();
-//        
-//        node.setInfo(valor);
-//        
-//        if (!esVacio()){
-//            
-//            if(Buscar(referencia)){
-//                Nodo aux = pFirst;
-//                
-//                while(aux.getInfo() != referencia){
-//                
-//                    aux = aux.getpNext();
-//                }
-//                Nodo siguiente = aux.getpNext();
-//                
-//                aux.setpNext(node);
-//                
-//                node.setpNext(siguiente);
-//                
-//                
-//                size ++;
-//            }
-//            
-//        }
-//        
-//        
-//    }
 
     /**
      *
@@ -189,7 +160,6 @@ public class Lista<T> {
         if (posicion == 0 || esVacio()) {
             nodo = pFirst;
             pFirst = nodo;
-            // System.out.println(nodo.getInfo());
         } else {
 
             Nodo<T> aux = pFirst;
@@ -257,14 +227,6 @@ public class Lista<T> {
                 while (aux.getpNext().getInfo() != nodo.getInfo()) {
 
                     aux = aux.getpNext();
-//            if (Buscar(nodo.getInfo())){
-//                Nodo aux = pFirst;
-//                while(aux.getpNext().getInfo() != nodo.getInfo()){
-//                    
-//                    aux = aux.getpNext();
-//                }
-//                aux.setpNext(nodo.getpNext());
-//                
 
                 }
                 aux.setpNext(aux.getpNext().getpNext());
@@ -296,39 +258,6 @@ public class Lista<T> {
 
         }
     }
-//    public void eliminarPosicion(int posicion){
-//        if(posicion == 0){
-//            if(pFirst != null)
-//                this.pFirst = this.pFirst.getpNext();
-//        }else{
-//            Nodo aux = this.pFirst;
-//        for(int i = 0; i < posicion -1; i++){
-//            aux = aux.getpNext();
-//        }
-//         aux.setpNext(aux.getpNext().getpNext());
-//        
-//        }
-//    }
-//    
-//    public void ordenar() {
-//
-//        for (int pasada = 1; pasada <= size - 1; pasada++) {
-//            Nodo nodo1 = pFirst;
-//            Nodo nodo2 = nodo1.getpNext();
-//
-//            while (nodo2!= null) {
-//                if (nodo1.getInfo() > nodo2.getInfo()) /*comparación */ {
-//                    /*intercambio*/
-//                    int aux = nodo1.getInfo();
-//                    nodo1.setInfo(nodo2.getInfo());
-//                    nodo2.setInfo(aux);
-//                }
-//                nodo1 = nodo2;
-//                nodo2 = nodo2.getpNext();
-//            }
-//        }
-//    }
-//    
 
     /**
      *
@@ -357,22 +286,6 @@ public class Lista<T> {
 
     }
 
-    //
-    //    public void imprimirValoresArticulo() {
-    //        if (!esVacio()) {
-    //            Nodo aux = pFirst;
-    //
-    //            for (int i = 0; i < size; i++) {
-    //
-    //                System.out.print(aux.getInfo() + " ==> ");
-    //
-    //                aux = aux.getpNext();
-    //            }
-    //        } else {
-    //            System.out.print("La lista esta vacia");
-    //        }
-    //
-    //    }
     public String concatenarValores(Object lista) {
         Nodo aux = pFirst;
         String concatenado = "";
@@ -384,7 +297,6 @@ public class Lista<T> {
             aux = aux.getpNext();
         }
         concatenadobien = concatenado.substring(0, concatenado.length() - 1);
-        System.out.println(concatenadobien);
 
         return concatenadobien;
     }
@@ -401,45 +313,6 @@ public class Lista<T> {
             }
         }
     }
-//    public void Localizar(int x){
-//
-//        Nodo node = new Nodo();
-//       
-//        node.setInfo(x);
-//        
-//        Nodo aux = pFirst;
-//        
-//        int counter = 0;
-//        
-//        for(int i = 0; i < size; i++){
-//        
-//            while(aux.getInfo() != node.getInfo()){
-//
-//            aux = aux.getpNext();
-//           
-//            i++;
-//            
-//            if(aux.getInfo() == node.getInfo()){
-//                //counter = 0;
-//                counter = i++;
-//                //System.out.println(counter);
-//
-//            }
-//
-//
-//            }
-//
-//
-//        }
-//        System.out.println(counter+1);
-//        
-//        if (!Buscar(x)){
-//            System.out.println("El valor que desea ubicar no se encuentra en la lista");
-//        } 
-//
-//        
-//       
-//        }
 
     /**
      *
@@ -558,15 +431,16 @@ public class Lista<T> {
         return curr;
 
     }
-    public T valorPorIndice(int index){
-    
+
+    public T valorPorIndice(int index) {
+
         Nodo<T> aux = this.pFirst;
         int i = 0;
-        while(i < index){
-            
+        while (i < index) {
+
             aux = aux.getpNext();
             i++;
-        
+
         }
         return aux.getInfo();
     }

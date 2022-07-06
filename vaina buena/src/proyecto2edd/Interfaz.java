@@ -5,17 +5,12 @@
  */
 package proyecto2edd;
 
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.concurrent.ForkJoinPool;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -25,7 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import static proyecto2edd.ManejoArchivo.lecturaArchivo;
-import static proyecto2edd.ManejoArchivo.*;
 
 /**
  *
@@ -234,7 +228,6 @@ public class Interfaz extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error. No existen elementos en la base de datos.");
         }
-
 
     }//GEN-LAST:event_ArticulosPorTituloActionPerformed
 

@@ -5,8 +5,6 @@
 package proyecto2edd;
 
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,17 +12,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import static proyecto2edd.Interfaz.articulo;
 import static proyecto2edd.Interfaz.hashAutores;
 import static proyecto2edd.Interfaz.hashPalabras;
 import static proyecto2edd.Interfaz.hashTitulo;
 import static proyecto2edd.Interfaz.listaArticulos;
-import static proyecto2edd.Metodos.*;
 
 /**
  *
@@ -37,11 +29,7 @@ public class ManejoArchivo {
 
         try {
             PrintWriter pw = new PrintWriter("test//resumenes.txt");
-
-//            PrintWriter salida = new PrintWriter(archivo);
-//            salida.close();
             pw.print(resumenes);
-            System.out.println("Se ha creado el archivo.");
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace(System.out);
@@ -264,7 +252,6 @@ public class ManejoArchivo {
                 if (!"".equals(articulos)) {
                     //Si el super string no esta vacio
                     String[] articulos_split = articulos.split("\n");
-//                   
                     for (int i = 0; i < articulos_split.length; i++) {
 
                         Lista listaAutores = new Lista();

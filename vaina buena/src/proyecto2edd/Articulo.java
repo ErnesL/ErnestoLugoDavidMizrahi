@@ -4,9 +4,6 @@
  */
 package proyecto2edd;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,13 +11,8 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import proyecto2edd.Metodos.*;
 
 /**
  *
@@ -83,22 +75,8 @@ public class Articulo<T> {
 
             aux1 = aux1.getpNext();
         }
-//        System.out.println(Metodos.contarPalabras(articulo));
         String aux = "Titulo: " + this.titulo + "\n" + "Autores: " + autoresconcatenados + "\n" + palabras;
 
-//        String palabras = "";
-//        String autoresconcatenados = this.autores.concatenarValores(this.autores);
-//
-//        Nodo aux1 = articulo.getPalabrasClave().getpFirst();
-//
-//        while (aux1 != null) {
-//
-//            cantidadDeVeces += "Frecuencia con la que aparece la palabra clave " + aux1.getInfo().toString() + ": " + "\n";
-//
-//            aux1 = aux1.getpNext();
-//        }
-//        System.out.println(Metodos.contarPalabras(articulo));
-//        String aux = "Titulo: " + this.titulo + "\n" + "Autores: " + autoresconcatenados + "\n" + cantidadDeVeces;
         //Interfaz
         JFrame frame = new JFrame(this.titulo);
         frame.setSize(500, 500);

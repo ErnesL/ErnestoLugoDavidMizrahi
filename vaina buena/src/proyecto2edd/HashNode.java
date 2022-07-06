@@ -9,19 +9,19 @@ package proyecto2edd;
  * @author davidmizrahi
  */
 public class HashNode<T> {
-    
+
     private int key;
-    
+
     private T value;
-    
+
     private HashNode<T> next;
-    
-    public HashNode(int key, T value){
-    
+
+    public HashNode(int key, T value) {
+
         this.key = key;
-        
+
         this.value = value;
-        
+
         this.next = null;
     }
 
@@ -48,5 +48,5 @@ public class HashNode<T> {
     public void setNext(HashNode<T> next) {
         this.next = next;
     }
-    
+
 }
